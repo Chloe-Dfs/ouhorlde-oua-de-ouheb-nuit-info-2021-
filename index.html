@@ -9,10 +9,14 @@
     <!-- Fichiers locaux -->
   </head>
   <body>
-    <div class="iwantToBreadFree">
+    <div class = "top">
+      <div class="logo"><p>mettre logo ici</p></div>
+      <div class="nomsite"><h1>BagueTest</h1></div>
+    </div>
 
+    <div class="iwantToBreadFree">
         <div class="titleQuestion" id="titleQ">
-            <h1>Quelle baguette es-tu ?</h1>
+            <h1>What Baguette are you ?</h1>
         </div>
 
         <div class="box" >
@@ -75,6 +79,10 @@
                 if(rep[i][id].length > 0) {
                     e.innerHTML=rep[i][id];
                     checkbox[i].hidden = false;
+                    document.getElementById("checkbox1").checked = false;
+                    document.getElementById("checkbox2").checked = false;
+                    document.getElementById("checkbox3").checked = false;
+                    document.getElementById("checkbox4").checked = false;
                     e.hidden = false;
                 }
                 else {
