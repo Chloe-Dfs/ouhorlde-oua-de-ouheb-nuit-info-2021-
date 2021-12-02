@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pirateeeeee</title>
+    <!-- API -->
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <!-- Fichiers locaux -->
+  </head>
+  <body>
+    <p class="pirate">Hello!</p>
+  </body>
+  <script>
+    var pirate = document.getElementsByClassName("pirate");
+
+    function httpGet(url)
+    {
+      fetch(url)
+      .then(function (response) {
+          switch (response.status) {
+              // status "OK"
+              case 200:
+                  return response.text();
+              // status "Not Found"
+              case 404:
+                  throw response;
+          }
+      })
+      .then(function (template) {
+          console.log(template);
+      })
+      .catch(function (response) {
+          // "Not Found"
+          console.log(response.statusText);
+      });  
+    }
+
+    for (var i = 0; i < pirate.length; i++) {
+      pirate[i].addEventListener('click', function(e) {
+        var response = '';
+        $.ajax({ type: "GET",   
+                url: 'https://pirate.monkeyness.com/api/translate?english='+encodeURI(e.target.innerHTML),   
+                async: false,
+                success : function(text)
+                {
+                    response = text;
+                }
+        });
+
+        console.log(response);
+        /*var url = "https://pirate.monkeyness.com/api/translate?english="+encodeURI(e.target.innerHTML);
+        var xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+              console.log(xhr);
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+          }};
+
+        xhr.send();*/
+      });
+    }
+  </script>
+</html>
