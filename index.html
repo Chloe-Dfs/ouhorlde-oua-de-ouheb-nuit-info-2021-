@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>BagueTest</title>
-    <link href="/css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
     <!-- API -->
 
     <!-- Fichiers locaux -->
@@ -16,27 +16,27 @@
         </div>
 
         <div class="box" >
-            <h2 id="question">Question numéro 1 à écrire</h2>
+            <h2 id="question"> You go to the bakery, you ask: </h2>
 
             <ul>
                 <li>
                     <input type="checkbox" id="checkbox1" name="choix">
-                    <label for="choix" id="label1">Choix numéro 1</label>
+                    <label for="choix" id="label1">A baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox2" name="choix">
-                    <label for="choix" id="label2">Choix numéro 2</label>
+                    <label for="choix" id="label2">A well-cooked baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox3" name="choix">
-                    <label for="choix" id="label3">Choix numéro 3</label>
+                    <label for="choix" id="label3">An undercooked baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox4" name="choix">
-                    <label for="choix" id="label4">Choix numéro 4</label>
+                    <label for="choix" id="label4">Scones (seriously ?)</label>
                 </li>
             </ul>
-            <button type="submit" id="btn" onclick="change()">changer question</button>
+            <button type="submit" id="btn" onclick="change()">Next question</button>
 
 
         </div>
@@ -49,16 +49,12 @@
   <script>
       var id = 0;
 
-    var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+    var questions = ["You go to the bakery, you ask :", "What do you have for breakfast ?", "What causes the end of the dinosaurs ?", "What is your favorite word ?", "You are alone on a desert island, you think of :", "I have 4 arms, 5 legs, 3 heads and 12 fingers, who am I ?", "What is the difference between an English and a French ?", "Who do you think are the best ?"];
 
-    var rep = [["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep3", "Rep 4"],
-                ["Rep 1", "Rep 2", "Rep3", "Rep 4"]]
+    var rep = [["A baguette", "A slice of semi-salted butter accompanied by its wild berry jam", "They drank gallons of tea", "Baguette","A crispy baguette", "A liar","His relationship to royalty","Croissant eaters"],
+                ["A well-cooked baguette", "A butter croissant", "They didn't have baguette", "Deja Vu","Well caramelized French toast", "An English","The amount of beer drunk each year","Baguette eaters"],
+                ["An undercooked baguette", "A fried egg lying around in the fridge for a long time", "Joan of Arc was not born", "Rendez Vous","A pancake", "An American","When they are old they go to each other's country","The European Rugby Champions 2020"],
+                ["Scones (seriously ?)", "What is breakfast?", "The three", "France","Answer D", "The three","Self-mockery","Everything except England"]]
 
       var question = document.getElementById("question");
       var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
@@ -66,15 +62,15 @@
       var btn = document.getElementById('btn');
 
       var change = function() {
-          if(btn.innerHTML == "Envoyer") {
+          if(btn.innerHTML == "Send") {
             alert("Questionnaire fini!");
           }
           else {
             id+=1;
             if(id == questions.length-1)
-                btn.innerHTML="Envoyer";
+                btn.innerHTML="Send";
             question.innerHTML=questions[id];
-            for (let i = 0; i < label.length; i++) {
+            for (let i = 0; i < 8; i++) {
                 const e = label[i];
                 if(rep[i][id].length > 0) {
                     e.innerHTML=rep[i][id];
