@@ -2,13 +2,91 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>Baguetest</title>
+    <title>BagueTest</title>
     <link href="/css/style.css" rel="stylesheet">
     <!-- API -->
 
     <!-- Fichiers locaux -->
   </head>
   <body>
-    <p>bonjour</p>
+    <div class="iwantToBreadFree">
+
+        <div class="titleQuestion" id="titleQ">
+            <h1>Quelle baguette es-tu ?</h1>
+        </div>
+
+        <div class="box" >
+            <h2 id="question">Question numéro 1 à écrire</h2>
+
+            <ul>
+                <li>
+                    <input type="checkbox" id="checkbox1" name="choix">
+                    <label for="choix" id="label1">Choix numéro 1</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkbox2" name="choix">
+                    <label for="choix" id="label2">Choix numéro 2</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkbox3" name="choix">
+                    <label for="choix" id="label3">Choix numéro 3</label>
+                </li>
+                <li>
+                    <input type="checkbox" id="checkbox4" name="choix">
+                    <label for="choix" id="label4">Choix numéro 4</label>
+                </li>
+            </ul>
+            <button type="submit" id="btn" onclick="change()">changer question</button>
+
+
+        </div>
+
+
+    </div>
+
   </body>
+
+  <script>
+      var id = 0;
+
+    var questions = ["Question 1", "Question 2", "Question 3", "Question 4", "Question 5", "Question 6", "Question 7", "Question 8"];
+
+    var rep = [["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
+                ["Rep 1", "Rep 2", "Rep 3", "Rep 4"],
+                ["Rep 1", "Rep 2", "Rep3", "Rep 4"],
+                ["Rep 1", "Rep 2", "Rep3", "Rep 4"]]
+
+      var question = document.getElementById("question");
+      var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
+      var label = [document.getElementById("label1"), document.getElementById("label2"), document.getElementById("label3"), document.getElementById("label4")];
+      var btn = document.getElementById('btn');
+
+      var change = function() {
+          if(btn.innerHTML == "Envoyer") {
+            alert("Questionnaire fini!");
+          }
+          else {
+            id+=1;
+            if(id == questions.length-1)
+                btn.innerHTML="Envoyer";
+            question.innerHTML=questions[id];
+            for (let i = 0; i < label.length; i++) {
+                const e = label[i];
+                if(rep[i][id].length > 0) {
+                    e.innerHTML=rep[i][id];
+                    checkbox[i].hidden = false;
+                    e.hidden = false;
+                }
+                else {
+                    checkbox[i].hidden = true;
+                    console.log(checkbox[i]);
+                    e.hidden = true;
+                }
+            }
+            label2.innerHTML=rep2[id];
+            label3.innerHTML=rep3[id];
+            label4.innerHTML=rep4[id];  
+            }     
+      }
+  </script>
 </html>
