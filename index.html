@@ -139,9 +139,7 @@
 
           xhr.onreadystatechange = function () {
           if (xhr.readyState === 4) {
-              console.log(xhr);
-              console.log(xhr.status);
-              console.log(xhr.responseText);
+              e.target.innerHTML = xhr.responseText;
           }};
 
             xhr.send();
