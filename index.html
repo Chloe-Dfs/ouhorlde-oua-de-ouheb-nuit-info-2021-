@@ -42,7 +42,8 @@
                 </ul>
                 <button type="submit" id="btn" class="btn" onclick="change()">Next question</button>
             </div>
-
+            <input type="image" id="langue" class="langue" src="https://administration.crystalium.eu/images/fr_flag.png" alt="lang" onclick="changeLang()"/>
+        
 
         </div>
 
@@ -50,11 +51,7 @@
 
     <script>
         var id = 0;
-
-        // Is this the real life?
-        // Is this just fantasy?
-
-            var questions = ["You go to the bakery, you ask :", "What do you have for breakfast ?", "What causes the end of the dinosaurs ?", "What is your favorite word (except Queen) ?", "You are alone on a desert island, you think of :", "I have 4 arms, 5 legs, 3 heads and 12 fingers, who am I ?", "What is the difference between an English and a French ?", "Who do you think are the best ?"];
+        var langue = 0;
 
       // Is this the real life?
       // Is this just fantasy?
@@ -66,10 +63,10 @@
                     ["A well-cooked baguette", "A butter croissant", "They didn't have baguette", "Deja Vu","Well caramelized French toast", "An English","The amount of beer drunk each year","Baguette eaters"],
                     ["An undercooked baguette", "A fried egg lying around in the fridge for a long time", "Joan of Arc was not born", "Rendez Vous","A pancake", "An American","When they are old they go to each other's country","The European Rugby Champions 2020"],
                     ["Scones (seriously ?)", "What is breakfast?", "The three", "France","Answer D", "The three","Self-mockery","Everything except England"]], 
-                    ["Une baguette","Une tartine de beurre demi-sel accompagnée de sa confiture au baies sauvages", "Ils buvaient des litres de thé", "Déja vu", "Une baguette croustillante", "Un menteur", "Sa relation à la royauté", "Les mangeurs de croissant"], 
+                    [["Une baguette","Une tartine de beurre demi-sel accompagnée de sa confiture au baies sauvages", "Ils buvaient des litres de thé", "Déja vu", "Une baguette croustillante", "Un menteur", "Sa relation à la royauté", "Les mangeurs de croissant"], 
                     ["Une baguette bien cuite", "Un croissant au beurre", "Ils n'avaient pas de baguette", "Rendez-vous", "Du pain perdu bien caramélisé", "Un anglais", "La quantité de bière bu", "Les mangeurs de baguette"], 
                     ["Une baguette pas trop cuite", "Un oeuf au plat trainant au fond du frigo depuis des lustres", "Jeanne d'Arc n'était pas encore née...", "Baguette", "Un Pancake", "Un américain", "Quand ils sont vieux, ils vont dans le pays de l'autre", "Les champions européen de Rugby 2020"], 
-                    ["Des scones (Sérieusement ..?)", "C'est quoi un petit déjeuner ?", "Les trois", "France", "La réponse d", "Les trois", "L'auto-dérision", "Tout sauf l'Angleterre"]];
+                    ["Des scones (Sérieusement ..?)", "C'est quoi un petit déjeuner ?", "Les trois", "France", "La réponse d", "Les trois", "L'auto-dérision", "Tout sauf l'Angleterre"]]];
 
 
 
@@ -92,16 +89,19 @@
 
         var r = getRandomInt(0,4);
 
-        var change = function() {
+        var actualiser = function(incr) {
             if(btn.innerHTML == "Send") {
-                question.innerHTML = "You are :";
+                if(langue == 0)
+                    question.innerHTML = "You are :";
+                else
+                    question.innerHTML = "Tu es :";
 
                 for (let i = 0; i<4;i++){
                     checkbox[i].hidden = true;
                     label[i].innerHTML = "";
                 }
 
-                label1.innerHTML = resultat[r];
+                label1.innerHTML = resultat[langue][r];
                 label2.innerHTML = "Here are some Queen music that you might like : \n";
 
 
@@ -111,14 +111,15 @@
             else {
                 //Don't stop me, don't stop me
                 //Don't stop me, hey, hey, hey
-                id+=1;
-                if(id == questions.length-1)
+                if(incr)
+                    id+=1;
+                if(id == questions[langue].length-1)
                     btn.innerHTML="Send";
-                    question.innerHTML=questions[id];
+                    question.innerHTML=questions[langue][id];
                 for (let i = 0; i < 4; i++) {
                     const e = label[i];
-                    if(rep[i][id].length > 0) {
-                        e.innerHTML=rep[i][id];
+                    if(rep[langue][i][id].length > 0) {
+                        e.innerHTML=rep[langue][i][id];
                         checkbox[i].hidden = false;
                         checkbox[i].checked = false;
                         e.hidden = false;
@@ -129,10 +130,14 @@
                         e.hidden = true;
                     }
                 }
-                label2.innerHTML=rep[1][id];
-                label3.innerHTML=rep[2][id];
-                label4.innerHTML=rep[3][id];  
-            }     
+                label2.innerHTML=rep[langue][1][id];
+                label3.innerHTML=rep[langue][2][id];
+                label4.innerHTML=rep[langue][3][id];  
+            }
+        }
+
+        var change = function() {
+            actualiser(true);
         }
 
         //English to English Pirate
@@ -173,6 +178,22 @@
 
                 xhr.send();
         });
+        }
+
+        //English to French
+
+        var changeLang = function() {
+            var lang = document.getElementById("langue");
+            if(langue==0) {
+                langue=1;
+                actualiser(false);
+                lang.src = "https://administration.crystalium.eu/images/uk_flag.png";
+            }
+            else {
+                langue=0;
+                actualiser(false);
+                lang.src = "https://administration.crystalium.eu/images/fr_flag.png";
+            }
         }
     </script>
 </html>
