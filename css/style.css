@@ -13,20 +13,24 @@ body {
 
 }
 
+.nomsite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 95%;
+}
+
+.freddie {
+   width: 500px; 
+}
+
 .logo {
     width : 5%;
 }
 
-img {
+.logg {
 	width: 100px;
 	height: 100px;
-}
-
-.nomsite {
-    width: 95%;
-    display: flex;
-    justify-content: center;
-
 }
 
 .iwantToBreadFree {
