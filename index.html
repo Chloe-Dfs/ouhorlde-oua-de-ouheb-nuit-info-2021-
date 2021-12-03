@@ -60,22 +60,41 @@
                     ["An undercooked baguette", "A fried egg lying around in the fridge for a long time", "Joan of Arc was not born", "Rendez Vous","A pancake", "An American","When they are old they go to each other's country","The European Rugby Champions 2020"],
                     ["Scones (seriously ?)", "What is breakfast?", "The three", "France","Answer D", "The three","Self-mockery","Everything except England"]];
 
+
+
+        var resultat = ["A magnificent traditional baguette! Congratulations !", "A magnificent flute! Congratulations !", "A simple baguette......", "A magnificent Sarmentine ! Congratulations !"]
+
+        var musique = ["Bohemian Rhapsody / God save the Queen / I want to break free", "God save the Queen / Don't Stop Me Now / Seven Seas Of Rhye", "Don't Stop Me Now, Bohemian Rhapsody", "Seven Seas Of Rhye, Bohemian Rhapsody, I want to break free"];
+
       var question = document.getElementById("question");
       var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
       var label = [document.getElementById("label1"), document.getElementById("label2"), document.getElementById("label3"), document.getElementById("label4")];
       var btn = document.getElementById('btn');
 
+      function getRandomInt(min, max) {
+        min = Math.ceil(min);
+        max = Math.floor(max);
+        return Math.floor(Math.random() * (max - min)) + min;
+        } 
+
       var change = function() {
           if(btn.innerHTML == "Send") {
             question.innerHTML = "You are :";
-            document.getElementById("checkbox1").hidden = true;
-            label1.innerHTML = "";
-            document.getElementById("checkbox2").hidden = true;
-            label2.innerHTML = "";
-            document.getElementById("checkbox3").hidden = true;
-            label3.innerHTML = "";
-            document.getElementById("checkbox4").hidden = true;
-            label4.innerHTML = "";
+
+            var r = getRandomInt(0,4);
+
+            for (let i = 0; i<4;i++){
+                checkbox[i].hidden = true;
+                label[i].innerHTML = "";
+            }
+
+            label1.innerHTML = resultat[r];
+            label2.innerHTML = "Here are some Queen music that you might like : \n";
+            
+            label3.innerHTML = musique[r];
+
+
+            console.log(r);
             btn.hidden = true;
           }
           else {
@@ -88,10 +107,7 @@
                 if(rep[i][id].length > 0) {
                     e.innerHTML=rep[i][id];
                     checkbox[i].hidden = false;
-                    document.getElementById("checkbox1").checked = false;
-                    document.getElementById("checkbox2").checked = false;
-                    document.getElementById("checkbox3").checked = false;
-                    document.getElementById("checkbox4").checked = false;
+                    checkbox[i].checked = false;
                     e.hidden = false;
                 }
                 else {
