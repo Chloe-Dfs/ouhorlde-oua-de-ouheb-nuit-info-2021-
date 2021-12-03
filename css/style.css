@@ -14,9 +14,12 @@ body {
 }
 
 .logo {
-    background-image: url(https://toppng.com/uploads/preview/fs-bread-loaf-bread-11563011385m4ielvzlsj.png);
-    width: 5%;
+    width : 5%;
+}
 
+img {
+	width: 100px;
+	height: 100px;
 }
 
 .nomsite {
@@ -46,17 +49,40 @@ body {
 }
 
 .box {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(230, 200, 104);
     padding-left: 50px;
     margin: 10px 0 30px 0;
     border-radius: 10px;
     width: 80%;
-    color: #ad854c;
+    color: rgb(129, 95, 56);
 
 }
 
 ul {
     list-style-type: none;
-    color: black;
+    color: rgb(110, 78, 41);
 
 }
+
+.btn {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+    border-radius: 10px 10px 0 0;
+    margin: 10px;
+    padding: 5px;
+    background-color: #cca062;
+    color: white;
+    border: none;
+}
+
+.btn:hover {
+    border-radius: 10px 10px 0 0;
+    margin: 10px;
+    background-color: white;
+    color: #cca062;
+    border: none;
+}
+
