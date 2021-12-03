@@ -41,11 +41,30 @@ img {
     background-color: #cca062;
 }
 
-.titleQuestion {
+.topBread {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+}
 
+.titleQuestion {
+    display: flex;
     width: 80%;
     height: 20%;
     color: whitesmoke;
+}
+
+.drapeau {
+    display: flex;
+    justify-content: end;
+    width: 20%;
+}
+
+.langue {
+    display: flex;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
 }
 
 .box {
@@ -85,4 +104,5 @@ ul {
     color: #cca062;
     border: none;
 }
+
 
