@@ -67,7 +67,16 @@
 
       var change = function() {
           if(btn.innerHTML == "Send") {
-            question.innerHTML = "Vous êtes la baguette suivante :";
+            question.innerHTML = "You are :";
+            document.getElementById("checkbox1").hidden = true;
+            label1.innerHTML = "";
+            document.getElementById("checkbox2").hidden = true;
+            label2.innerHTML = "";
+            document.getElementById("checkbox3").hidden = true;
+            label3.innerHTML = "";
+            document.getElementById("checkbox4").hidden = true;
+            label4.innerHTML = "";
+            btn.hidden = true;
           }
           else {
             id+=1;
@@ -76,8 +85,6 @@
                 question.innerHTML=questions[id];
             for (let i = 0; i < 4; i++) {
                 const e = label[i];
-                console.log(i);
-                tempo = rep[i];
                 if(rep[i][id].length > 0) {
                     e.innerHTML=rep[i][id];
                     checkbox[i].hidden = false;
