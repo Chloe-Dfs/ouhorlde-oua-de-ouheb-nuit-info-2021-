@@ -133,7 +133,7 @@
 
       for (var i = 0; i < pirate.length; i++) {
       pirate[i].addEventListener('click', function(e) {
-          var url = "https://pirate.monkeyness.com/api/translate?english="+encodeURI(e.target.innerHTML);
+          var url = "pirate.php?english="+encodeURI(e.target.innerHTML);
           var xhr = new XMLHttpRequest();
           xhr.open("GET", url);
 
