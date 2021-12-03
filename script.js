@@ -16,13 +16,11 @@ var rep = [[["A baguette", "A slice of semi-salted butter accompanied by its wil
             ["Une baguette pas trop cuite", "Un oeuf au plat trainant au fond du frigo depuis des lustres", "Jeanne d'Arc n'était pas encore née...", "Baguette", "Un Pancake", "Un américain", "Quand ils sont vieux, ils vont dans le pays de l'autre", "Les champions européen de Rugby 2020"], 
             ["Des scones (Sérieusement ..?)", "C'est quoi un petit déjeuner ?", "Les trois", "France", "La réponse d", "Les trois", "L'auto-dérision", "Tout sauf l'Angleterre"]]];
 
-
-
-
     var resultat = [["A magnificent traditional baguette! Congratulations !", "A magnificent flute! Congratulations !", "A simple baguette......", "A magnificent Sarmentine ! Congratulations !"], 
                     [" Une magnifique baguette traditionnel ! Félicitations !", "Une magnifique flûte ! Félicitations !", "Une simple baguette.....", "Une magnifique Sarmentine ! Félicitations !"]];
 
     var musique = ["Bohemian Rhapsody / God save the Queen / I want to break free", "God save the Queen / Don't Stop Me Now / Seven Seas Of Rhye", "Don't Stop Me Now, Bohemian Rhapsody", "Seven Seas Of Rhye, Bohemian Rhapsody, I want to break free"];
+    var images = ["https://administration.crystalium.eu/images/queen1.jpg", "https://administration.crystalium.eu/images/queen2.jpg", "https://administration.crystalium.eu/images/queen3.jpg", "https://administration.crystalium.eu/images/queen4.jpg"];
 
 var titre = document.getElementById("titre");
 var question = document.getElementById("question");
@@ -36,7 +34,8 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min)) + min;
     } 
 
-var r = getRandomInt(0,4);
+var r = getRandomInt(0,musique.length);
+var r2 = getRandomInt(0,images.length);
 
 var actualiser = function(incr) {
     if(langue == 0)
@@ -45,6 +44,14 @@ var actualiser = function(incr) {
         titre.innerHTML = "QUELLE BAGUETTE ES-TU ?";
     if(btn.innerHTML == "Send" || btn.innerHTML == "Envoyer") {
         document.getElementById("btn-hide").hidden = true;
+        document.getElementById("photo-finish").src = images[r2];
+
+        for (let i = 0; i<4;i++){
+            checkbox[i].hidden = true;
+            label[i].innerHTML = "";
+        }
+
+        label1.innerHTML = resultat[langue][r];
         if(langue == 0) {
             question.innerHTML = "You are :";
             label2.innerHTML = "Here are some Queen music that you might like : \n";
@@ -53,13 +60,6 @@ var actualiser = function(incr) {
             question.innerHTML = "Tu es :";
             label2.innerHTML = "Voici quelques musiques de Queen qui pourraient vous plaire : \n";
         }
-
-        for (let i = 0; i<4;i++){
-            checkbox[i].hidden = true;
-            label[i].innerHTML = "";
-        }
-
-        label1.innerHTML = resultat[langue][r];
         label3.innerHTML = musique[r];
     }
     else {
