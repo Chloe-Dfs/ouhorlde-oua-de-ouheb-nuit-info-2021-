@@ -16,28 +16,28 @@
 
     <div class="iwantToBreadFree">
         <div class="titleQuestion" id="titleQ">
-            <h1>What Baguette are you ?</h1>
+            <h1 class="pirate">What Baguette are you ?</h1>
         </div>
 
         <div class="box" >
-            <h2 id="question"> You go to the bakery, you ask: </h2>
+            <h2 class="pirate" id="question"> You go to the bakery, you ask: </h2>
 
             <ul>
                 <li>
                     <input type="checkbox" id="checkbox1" name="choix">
-                    <label for="choix" id="label1">A baguette</label>
+                    <label class="pirate" for="choix" id="label1">A baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox2" name="choix">
-                    <label for="choix" id="label2">A well-cooked baguette</label>
+                    <label class="pirate" for="choix" id="label2">A well-cooked baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox3" name="choix">
-                    <label for="choix" id="label3">An undercooked baguette</label>
+                    <label class="pirate" for="choix" id="label3">An undercooked baguette</label>
                 </li>
                 <li>
                     <input type="checkbox" id="checkbox4" name="choix">
-                    <label for="choix" id="label4">Scones (seriously ?)</label>
+                    <label class="pirate" for="choix" id="label4">Scones (seriously ?)</label>
                 </li>
             </ul>
             <button type="submit" id="btn" onclick="change()">Next question</button>
@@ -104,6 +104,48 @@
             label3.innerHTML=rep[2][id];
             label4.innerHTML=rep[3][id];  
         }     
+      }
+
+      //English to English Pirate
+      var pirate = document.getElementsByClassName("pirate");
+
+      function httpGet(url)
+      {
+      fetch(url)
+      .then(function (response) {
+          switch (response.status) {
+              // status "OK"
+              case 200:
+                  return response.text();
+              // status "Not Found"
+              case 404:
+                  throw response;
+          }
+      })
+      .then(function (template) {
+          console.log(template);
+      })
+      .catch(function (response) {
+          // "Not Found"
+          console.log(response.statusText);
+      });  
+      }
+
+      for (var i = 0; i < pirate.length; i++) {
+      pirate[i].addEventListener('click', function(e) {
+          var url = "pirate.php?english="+encodeURI(e.target.innerHTML);
+          var xhr = new XMLHttpRequest();
+          xhr.open("GET", url);
+
+          xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+              console.log(xhr);
+              console.log(xhr.status);
+              console.log(xhr.responseText);
+          }};
+
+            xhr.send();
+      });
       }
   </script>
 </html>
