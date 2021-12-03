@@ -1,56 +1,59 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-    <title>BagueTest</title>
-    <link href="css/style.css" rel="stylesheet">
-  </head>
-  <body>
-    <div class = "top">
-      <div class="logo">
-        <img src="https://administration.crystalium.eu/images/logo2.png" alt="le logo"/>
-      </div>
-      <div class="nomsite"><h1>BagueTest</h1></div>
-    </div>
-
-    <div class="iwantToBreadFree">
-        <div class="titleQuestion" id="titleQ">
-            <h1 class="pirate">What Baguette are you ?</h1>
+    <head>
+        <meta charset="utf-8">
+        <title>BagueTest</title>
+        <link href="css/style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class = "top">
+        <div class="logo">
+            <img src="https://administration.crystalium.eu/images/logo2.png" alt="le logo"/>
+        </div>
+        <div class="nomsite"><h1>BagueTest</h1></div>
         </div>
 
-        <div class="box" >
-            <h2 class="pirate" id="question"> You go to the bakery, you ask: </h2>
+        <div class="iwantToBreadFree">
+            <div class="titleQuestion" id="titleQ">
+                <h1 class="pirate">What Baguette are you ?</h1>
+            </div>
 
-            <ul>
-                <li>
-                    <input type="checkbox" id="checkbox1" name="choix">
-                    <label class="pirate" for="choix" id="label1">A baguette</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="checkbox2" name="choix">
-                    <label class="pirate" for="choix" id="label2">A well-cooked baguette</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="checkbox3" name="choix">
-                    <label class="pirate" for="choix" id="label3">An undercooked baguette</label>
-                </li>
-                <li>
-                    <input type="checkbox" id="checkbox4" name="choix">
-                    <label class="pirate" for="choix" id="label4">Scones (seriously ?)</label>
-                </li>
-            </ul>
-            <button type="submit" id="btn" class="btn" onclick="change()">Next question</button>
+            <div class="box" >
+                <h2 class="pirate" id="question"> You go to the bakery, you ask: </h2>
+
+                <ul>
+                    <li>
+                        <input type="checkbox" id="checkbox1" name="choix">
+                        <label class="pirate" for="choix" id="label1">A baguette</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox2" name="choix">
+                        <label class="pirate" for="choix" id="label2">A well-cooked baguette</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox3" name="choix">
+                        <label class="pirate" for="choix" id="label3">An undercooked baguette</label>
+                    </li>
+                    <li>
+                        <input type="checkbox" id="checkbox4" name="choix">
+                        <label class="pirate" for="choix" id="label4">Scones (seriously ?)</label>
+                    </li>
+                </ul>
+                <button type="submit" id="btn" class="btn" onclick="change()">Next question</button>
+            </div>
 
 
         </div>
 
+    </body>
 
-    </div>
+    <script>
+        var id = 0;
 
-  </body>
+        // Is this the real life?
+        // Is this just fantasy?
 
-  <script>
-      var id = 0;
+            var questions = ["You go to the bakery, you ask :", "What do you have for breakfast ?", "What causes the end of the dinosaurs ?", "What is your favorite word (except Queen) ?", "You are alone on a desert island, you think of :", "I have 4 arms, 5 legs, 3 heads and 12 fingers, who am I ?", "What is the difference between an English and a French ?", "Who do you think are the best ?"];
 
       // Is this the real life?
       // Is this just fantasy?
@@ -69,108 +72,105 @@
 
 
 
-        var resultat = ["A magnificent traditional baguette! Congratulations !", "A magnificent flute! Congratulations !", "A simple baguette......", "A magnificent Sarmentine ! Congratulations !"]
 
-        var musique = ["Bohemian Rhapsody / God save the Queen / I want to break free", "God save the Queen / Don't Stop Me Now / Seven Seas Of Rhye", "Don't Stop Me Now, Bohemian Rhapsody", "Seven Seas Of Rhye, Bohemian Rhapsody, I want to break free"];
+            var resultat = ["A magnificent traditional baguette! Congratulations !", "A magnificent flute! Congratulations !", "A simple baguette......", "A magnificent Sarmentine ! Congratulations !"]
 
-      var question = document.getElementById("question");
-      var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
-      var label = [document.getElementById("label1"), document.getElementById("label2"), document.getElementById("label3"), document.getElementById("label4")];
-      var btn = document.getElementById('btn');
+            var musique = ["Bohemian Rhapsody / God save the Queen / I want to break free", "God save the Queen / Don't Stop Me Now / Seven Seas Of Rhye", "Don't Stop Me Now, Bohemian Rhapsody", "Seven Seas Of Rhye, Bohemian Rhapsody, I want to break free"];
 
-      function getRandomInt(min, max) {
-        min = Math.ceil(min);
-        max = Math.floor(max);
-        return Math.floor(Math.random() * (max - min)) + min;
-        } 
+        var question = document.getElementById("question");
+        var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
+        var label = [document.getElementById("label1"), document.getElementById("label2"), document.getElementById("label3"), document.getElementById("label4")];
+        var btn = document.getElementById('btn');
 
-      var change = function() {
-          if(btn.innerHTML == "Send") {
-            question.innerHTML = "You are :";
+        function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min)) + min;
+            } 
 
-            var r = getRandomInt(0,5);
+        var r = getRandomInt(0,4);
 
-            for (let i = 0; i<4;i++){
-                checkbox[i].hidden = true;
-                label[i].innerHTML = "";
-            }
+        var change = function() {
+            if(btn.innerHTML == "Send") {
+                question.innerHTML = "You are :";
 
-            label1.innerHTML = resultat[r];
-            label2.innerHTML = "Here are some Queen music that you might like : \n";
-
-
-            
-            label3.innerHTML = musique[r];
-
-
-            console.log(r);
-            btn.hidden = true;
-          }
-          else {
-            //Don't stop me, don't stop me
-            //Don't stop me, hey, hey, hey
-            id+=1;
-            if(id == questions.length-1)
-                btn.innerHTML="Send";
-                question.innerHTML=questions[id];
-            for (let i = 0; i < 4; i++) {
-                const e = label[i];
-                if(rep[i][id].length > 0) {
-                    e.innerHTML=rep[i][id];
-                    checkbox[i].hidden = false;
-                    checkbox[i].checked = false;
-                    e.hidden = false;
-                }
-                else {
+                for (let i = 0; i<4;i++){
                     checkbox[i].hidden = true;
-                    console.log(checkbox[i]);
-                    e.hidden = true;
+                    label[i].innerHTML = "";
                 }
+
+                label1.innerHTML = resultat[r];
+                label2.innerHTML = "Here are some Queen music that you might like : \n";
+
+
+                
+                label3.innerHTML = musique[r];
             }
-            label2.innerHTML=rep[1][id];
-            label3.innerHTML=rep[2][id];
-            label4.innerHTML=rep[3][id];  
-        }     
-      }
+            else {
+                //Don't stop me, don't stop me
+                //Don't stop me, hey, hey, hey
+                id+=1;
+                if(id == questions.length-1)
+                    btn.innerHTML="Send";
+                    question.innerHTML=questions[id];
+                for (let i = 0; i < 4; i++) {
+                    const e = label[i];
+                    if(rep[i][id].length > 0) {
+                        e.innerHTML=rep[i][id];
+                        checkbox[i].hidden = false;
+                        checkbox[i].checked = false;
+                        e.hidden = false;
+                    }
+                    else {
+                        checkbox[i].hidden = true;
+                        console.log(checkbox[i]);
+                        e.hidden = true;
+                    }
+                }
+                label2.innerHTML=rep[1][id];
+                label3.innerHTML=rep[2][id];
+                label4.innerHTML=rep[3][id];  
+            }     
+        }
 
-      //English to English Pirate
-      var pirate = document.getElementsByClassName("pirate");
+        //English to English Pirate
+        var pirate = document.getElementsByClassName("pirate");
 
-      function httpGet(url)
-      {
-      fetch(url)
-      .then(function (response) {
-          switch (response.status) {
-              // status "OK"
-              case 200:
-                  return response.text();
-              // status "Not Found"
-              case 404:
-                  throw response;
-          }
-      })
-      .then(function (template) {
-          console.log(template);
-      })
-      .catch(function (response) {
-          // "Not Found"
-          console.log(response.statusText);
-      });  
-      }
+        function httpGet(url)
+        {
+        fetch(url)
+        .then(function (response) {
+            switch (response.status) {
+                // status "OK"
+                case 200:
+                    return response.text();
+                // status "Not Found"
+                case 404:
+                    throw response;
+            }
+        })
+        .then(function (template) {
+            console.log(template);
+        })
+        .catch(function (response) {
+            // "Not Found"
+            console.log(response.statusText);
+        });  
+        }
 
-      for (var i = 0; i < pirate.length; i++) {
-      pirate[i].addEventListener('click', function(e) {
-          var url = "pirate.php?english="+encodeURI(e.target.innerHTML);
-          var xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
+        for (var i = 0; i < pirate.length; i++) {
+        pirate[i].addEventListener('click', function(e) {
+            var url = "pirate.php?english="+encodeURI(e.target.innerHTML);
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", url);
 
-          xhr.onreadystatechange = function () {
-          if (xhr.readyState === 4) {
-              e.target.innerHTML = xhr.responseText;
-          }};
+            xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                e.target.innerHTML = xhr.responseText;
+            }};
 
-            xhr.send();
-      });
-      }
-  </script>
+                xhr.send();
+        });
+        }
+    </script>
 </html>
