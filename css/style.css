@@ -108,4 +108,10 @@ ul {
     border: none;
 }
 
+.photo-finish {
+    display: flex;
+    margin: auto auto 10px auto;
+    height: 300px;
+    width: 300px;
+}
 

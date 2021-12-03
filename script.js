@@ -44,6 +44,7 @@ var actualiser = function(incr) {
         titre.innerHTML = "QUELLE BAGUETTE ES-TU ?";
     if(btn.innerHTML == "Send" || btn.innerHTML == "Envoyer") {
         document.getElementById("btn-hide").hidden = true;
+        document.getElementById("img-hide").hidden = false;
         document.getElementById("photo-finish").src = images[r2];
 
         for (let i = 0; i<4;i++){
