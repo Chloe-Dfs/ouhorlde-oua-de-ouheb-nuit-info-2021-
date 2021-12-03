@@ -53,12 +53,12 @@
   <script>
       var id = 0;
 
-    var questions = ["You go to the bakery, you ask :", "What do you have for breakfast ?", "What causes the end of the dinosaurs ?", "What is your favorite word ?", "You are alone on a desert island, you think of :", "I have 4 arms, 5 legs, 3 heads and 12 fingers, who am I ?", "What is the difference between an English and a French ?", "Who do you think are the best ?"];
+        var questions = ["You go to the bakery, you ask :", "What do you have for breakfast ?", "What causes the end of the dinosaurs ?", "What is your favorite word ?", "You are alone on a desert island, you think of :", "I have 4 arms, 5 legs, 3 heads and 12 fingers, who am I ?", "What is the difference between an English and a French ?", "Who do you think are the best ?"];
 
-    var rep = [["A baguette", "A slice of semi-salted butter accompanied by its wild berry jam", "They drank gallons of tea", "Baguette","A crispy baguette", "A liar","His relationship to royalty","Croissant eaters"],
-                ["A well-cooked baguette", "A butter croissant", "They didn't have baguette", "Deja Vu","Well caramelized French toast", "An English","The amount of beer drunk each year","Baguette eaters"],
-                ["An undercooked baguette", "A fried egg lying around in the fridge for a long time", "Joan of Arc was not born", "Rendez Vous","A pancake", "An American","When they are old they go to each other's country","The European Rugby Champions 2020"],
-                ["Scones (seriously ?)", "What is breakfast?", "The three", "France","Answer D", "The three","Self-mockery","Everything except England"]]
+        var rep = [["A baguette", "A slice of semi-salted butter accompanied by its wild berry jam", "They drank gallons of tea", "Baguette","A crispy baguette", "A liar","His relationship to royalty","Croissant eaters"],
+                    ["A well-cooked baguette", "A butter croissant", "They didn't have baguette", "Deja Vu","Well caramelized French toast", "An English","The amount of beer drunk each year","Baguette eaters"],
+                    ["An undercooked baguette", "A fried egg lying around in the fridge for a long time", "Joan of Arc was not born", "Rendez Vous","A pancake", "An American","When they are old they go to each other's country","The European Rugby Champions 2020"],
+                    ["Scones (seriously ?)", "What is breakfast?", "The three", "France","Answer D", "The three","Self-mockery","Everything except England"]];
 
       var question = document.getElementById("question");
       var checkbox = [document.getElementById("checkbox1"), document.getElementById("checkbox2"), document.getElementById("checkbox3"), document.getElementById("checkbox4")];
@@ -67,15 +67,17 @@
 
       var change = function() {
           if(btn.innerHTML == "Send") {
-            alert("Questionnaire fini!");
+            question.innerHTML = "Vous êtes la baguette suivante :";
           }
           else {
             id+=1;
             if(id == questions.length-1)
                 btn.innerHTML="Send";
-            question.innerHTML=questions[id];
-            for (let i = 0; i < 8; i++) {
+                question.innerHTML=questions[id];
+            for (let i = 0; i < 4; i++) {
                 const e = label[i];
+                console.log(i);
+                tempo = rep[i];
                 if(rep[i][id].length > 0) {
                     e.innerHTML=rep[i][id];
                     checkbox[i].hidden = false;
@@ -91,10 +93,10 @@
                     e.hidden = true;
                 }
             }
-            label2.innerHTML=rep2[id];
-            label3.innerHTML=rep3[id];
-            label4.innerHTML=rep4[id];  
-            }     
+            label2.innerHTML=rep[1][id];
+            label3.innerHTML=rep[2][id];
+            label4.innerHTML=rep[3][id];  
+        }     
       }
   </script>
 </html>
